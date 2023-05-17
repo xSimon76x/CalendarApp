@@ -4,6 +4,7 @@ import Modal from "react-modal"
 import DatePicker, { registerLocale } from "react-datepicker";
 import es from 'date-fns/locale/es';
 import Swal from "sweetalert2";
+import { useUiStore } from "../../hooks";
 
 import "react-datepicker/dist/react-datepicker.css";
 import "sweetalert2/dist/sweetalert2.min.css"
@@ -25,7 +26,8 @@ Modal.setAppElement('#root');
 
 export const CalendarModal = () => {
 
-    const [isModalOpen, setIsModalOpen] = useState(true);
+    const { isDateModalOpen, closeDateModal } = useUiStore();
+    
     const [formSubmitted, setFormSubmitted] = useState(false);
 
     const [formValues, setFormValues] = useState({
@@ -60,7 +62,7 @@ export const CalendarModal = () => {
     }
 
     const onCloseModal = () => {
-        setIsModalOpen(false);
+        closeDateModal();
     };
 
     const onSumbit = (e) => {
@@ -79,8 +81,8 @@ export const CalendarModal = () => {
 
     return (
         <Modal
-            isOpen={isModalOpen}
-            // onAfterOpen={afterOpenModal}
+            isOpen={isDateModalOpen}
+            // onAfterOpen={() => console.log("asda")} 
             onRequestClose={onCloseModal}
             style={customStyles}
             // contentLabel="Example Modal"
