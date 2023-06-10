@@ -18,8 +18,8 @@ const registerFormFields = {
 
 export const LoginPage = () => {
 
-    const { startLogin, startRegister } = useAuthStore();
-    const { errorMessage } = useSelector( state => state.auth );
+    const { startLogin, startRegister, errorMessage } = useAuthStore();
+    // const { errorMessage } = useSelector( state => state.auth );
 
     const { 
         loginEmail, 
